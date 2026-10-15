@@ -1,0 +1,22 @@
+{
+  "type": "port",
+  "name": "candle-kernels-kotlin",
+  "source": {
+    "path": "tmp/candle-kernels/src",
+    "lang": "rust"
+  },
+  "target": {
+    "path": "src/commonMain/kotlin/io/github/kotlinmania/candlekernels",
+    "lang": "kotlin"
+  },
+  "checks": {
+    "deep": true,
+    "missing": true,
+    "todos": true,
+    "lint": true
+  },
+  "reexport_modules": [
+    "mod.rs",
+    "lib.rs"
+  ]
+}
