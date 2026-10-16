@@ -1,52 +1,68 @@
-# CandleKernels in Kotlin
+# candle-kernels-kotlin in Kotlin
 
-[![GitHub link](https://img.shields.io/badge/GitHub-KotlinMania%2Fcandle--kernels--kotlin-blue.svg)](https://github.com/KotlinMania/candle-kernels-kotlin)
+[![GitHub link](https://img.shields.io/badge/GitHub-KotlinMania%2Fcandle-kernels-kotlin-blue.svg)](https://github.com/KotlinMania/candle-kernels-kotlin)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.kotlinmania/candle-kernels-kotlin)](https://central.sonatype.com/artifact/io.github.kotlinmania/candle-kernels-kotlin)
 [![Build status](https://img.shields.io/github/actions/workflow/status/KotlinMania/candle-kernels-kotlin/ci.yml?branch=main)](https://github.com/KotlinMania/candle-kernels-kotlin/actions)
 
-Kotlin Multiplatform line-by-line clean-room port of the Rust crate [`candle-kernels`](https://crates.io/crates/candle-kernels).
+This is a Kotlin Multiplatform line-by-line transliteration port of [`candle-kernels`](https://github.com/huggingface/candle).
 
-> **Status: scaffold — porting has not started.** This repo currently contains build infrastructure only. The upstream Rust source for the `candle-kernels` crate will be cloned into `tmp/` (gitignored) when porting begins.
+**Original Project:** This port is based on [`candle-kernels`](https://github.com/huggingface/candle). All design credit and project intent belong to the upstream authors; this repository is a faithful port to Kotlin Multiplatform with no behavioural changes intended.
 
-## About
+### Porting status
 
-Rust crate `candle-kernels`: CUDA kernels and PTX definitions for Candle.
+This is an **in-progress port**. The goal is feature parity with the upstream Rust crate while providing a native Kotlin Multiplatform API. Every Kotlin file carries a `// port-lint: source <path>` header naming its upstream Rust counterpart so the AST-distance tool can track provenance.
 
-This port targets functional parity with the upstream Rust crate while presenting an idiomatic Kotlin Multiplatform API. Every Kotlin file is a faithful translation of an upstream Rust file and carries a `// port-lint: source <path>` header so the AST-distance tool can track provenance.
+---
 
-## Supported targets
+## Upstream README — `candle-kernels`
 
-- macOS arm64 / x64
-- Linux x64
-- Windows mingw-x64
-- iOS arm64 / x64 / simulator-arm64
-- JS (browser + Node.js)
-- Wasm-JS (browser + Node.js)
-- Android (API 24+)
+> The text below is reproduced from [`https://github.com/huggingface/candle`](https://github.com/huggingface/candle). It is the upstream project's own description and remains under the upstream authors' authorship; links have been rewritten to absolute upstream URLs where appropriate so they continue to resolve from this repository.
 
-## Installation
+# candle-kernels
 
-Once published:
+This crate contains CUDA kernels used from candle. Some of these implementations
+come from the [dfdx crate](https://github.com/coreylowman/dfdx).
+
+---
+
+## About this Kotlin port
+
+### Installation
 
 ```kotlin
 dependencies {
-    implementation("io.github.kotlinmania:candle-kernels-kotlin:0.1.0-SNAPSHOT")
+    implementation("io.github.kotlinmania:candle-kernels-kotlin:0.1.0")
 }
 ```
 
-## Build
+### Building
 
 ```bash
 ./gradlew build
 ./gradlew test
 ```
 
-## Porting guidelines
+### Targets
 
-See [CLAUDE.md](CLAUDE.md) and [AGENTS.md](AGENTS.md) for translator discipline, port-lint header convention, and Rust → Kotlin idiom mapping.
+- macOS arm64
+- Linux x64
+- Windows mingw-x64
+- iOS arm64 / simulator-arm64 (Swift export + XCFramework)
+- JS (browser + Node.js)
+- Wasm-JS (browser + Node.js)
+- Android (API 24+)
 
-## License
+### Porting guidelines
 
-Apache 2.0 — see [LICENSE](LICENSE).
+See [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md) for translator discipline, port-lint header convention, and Rust → Kotlin idiom mapping.
 
-Original work copyrighted by the upstream `candle-kernels` authors. Kotlin port copyright (c) 2026 Sydney Renee and The Solace Project.
+### License
+
+This Kotlin port is distributed under the same license terms as the upstream [`candle-kernels`](https://github.com/huggingface/candle). See [LICENSE](LICENSE) (and any sibling `LICENSE-*` / `NOTICE` files mirrored from upstream) for the full text.
+
+Original work copyrighted by the candle-kernels authors.  
+Kotlin port: Copyright (c) 2026 Sydney Renee and The Solace Project.
+
+### Acknowledgments
+
+Thanks to the [`candle-kernels`](https://github.com/huggingface/candle) maintainers and contributors for the original Rust implementation. This port reproduces their work in Kotlin Multiplatform; bug reports about upstream design or behavior should go to the upstream repository.
