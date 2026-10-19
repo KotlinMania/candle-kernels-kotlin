@@ -31,7 +31,7 @@ come from the [dfdx crate](https://github.com/coreylowman/dfdx).
 
 ```kotlin
 dependencies {
-    implementation("io.github.kotlinmania:candle-kernels-kotlin:0.10.2")
+    implementation("io.github.kotlinmania:candle-kernels-kotlin:0.1.0")
 }
 ```
 
